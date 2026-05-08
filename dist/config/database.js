@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const path_1 = __importDefault(require("path"));
 const config = ({ env }) => {
-    const client = env('DATABASE_CLIENT', 'sqlite');
+    const client = env('DATABASE_CLIENT', 'sqlite').toLowerCase();
     const connections = {
         mysql: {
             connection: {
@@ -23,7 +23,7 @@ const config = ({ env }) => {
                     rejectUnauthorized: env.bool('DATABASE_SSL_REJECT_UNAUTHORIZED', true),
                 },
             },
-            pool: { min: env.int('DATABASE_POOL_MIN', 2), max: env.int('DATABASE_POOL_MAX', 10) },
+            pool: { min: env.int('DATABASE_POOL_MIN', 0), max: env.int('DATABASE_POOL_MAX', 10) },
         },
         postgres: {
             connection: {
@@ -43,7 +43,7 @@ const config = ({ env }) => {
                 },
                 schema: env('DATABASE_SCHEMA', 'public'),
             },
-            pool: { min: env.int('DATABASE_POOL_MIN', 2), max: env.int('DATABASE_POOL_MAX', 10) },
+            pool: { min: env.int('DATABASE_POOL_MIN', 0), max: env.int('DATABASE_POOL_MAX', 10) },
         },
         sqlite: {
             connection: {
