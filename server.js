@@ -1,5 +1,5 @@
 try {
-  const strapi = require('@strapi/strapi');
+  const { createStrapi } = require('@strapi/strapi');
   const path = require('path');
 
   process.chdir(__dirname);
@@ -12,7 +12,10 @@ try {
   const start = async () => {
     try {
       console.log('⏳ Creando instancia...');
-      const app = strapi();
+      const app = createStrapi({
+        appDir: __dirname,
+        distDir: path.join(__dirname, 'dist')
+      });
       
       console.log('⏳ Iniciando servidor...');
       await app.start();
