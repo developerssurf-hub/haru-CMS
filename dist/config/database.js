@@ -23,7 +23,11 @@ const config = ({ env }) => {
                     rejectUnauthorized: env.bool('DATABASE_SSL_REJECT_UNAUTHORIZED', true),
                 },
             },
-            pool: { min: env.int('DATABASE_POOL_MIN', 0), max: env.int('DATABASE_POOL_MAX', 10) },
+            pool: {
+                min: env.int('DATABASE_POOL_MIN', 0),
+                max: env.int('DATABASE_POOL_MAX', 10),
+                idleTimeoutMillis: 10000 // Previene el ECONNRESET en Hostinger cerrando conexiones ociosas rápido
+            },
         },
         postgres: {
             connection: {

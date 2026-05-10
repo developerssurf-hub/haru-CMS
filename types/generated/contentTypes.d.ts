@@ -953,15 +953,17 @@ export interface PluginUsersPermissionsUser
   };
   options: {
     draftAndPublish: false;
-    timestamps: true;
   };
   attributes: {
     blocked: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    CELULAR: Schema.Attribute.String;
     confirmationToken: Schema.Attribute.String & Schema.Attribute.Private;
     confirmed: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Documento: Schema.Attribute.String;
+    EDAD: Schema.Attribute.Integer;
     email: Schema.Attribute.Email &
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMaxLength<{
@@ -973,12 +975,42 @@ export interface PluginUsersPermissionsUser
       'plugin::users-permissions.user'
     > &
       Schema.Attribute.Private;
+    MAYORACARGO: Schema.Attribute.String;
+    MenorDeEdad: Schema.Attribute.Boolean;
     password: Schema.Attribute.Password &
       Schema.Attribute.Private &
       Schema.Attribute.SetMinMaxLength<{
         minLength: 6;
       }>;
     provider: Schema.Attribute.String;
+    PROVINCIA: Schema.Attribute.Enumeration<
+      [
+        'Buenos Aires',
+        'Catamarca',
+        'Chaco',
+        'Chubut',
+        'Ciudad Aut\u00F3noma de Buenos Aires',
+        'C\u00F3rdoba',
+        'Corrientes',
+        'Entre R\u00EDos',
+        'Formosa',
+        'Jujuy',
+        'La Pampa',
+        'La Rioja',
+        'Mendoza',
+        'Misiones',
+        'Neuqu\u00E9n',
+        'R\u00EDo Negro',
+        'Salta',
+        'San Juan',
+        'San Luis',
+        'Santa Cruz',
+        'Santa Fe',
+        'Santiago del Estero',
+        'Tierra del Fuego, Ant\u00E1rtida e Islas del Atl\u00E1ntico Sur',
+        'Tucum\u00E1n',
+      ]
+    >;
     publishedAt: Schema.Attribute.DateTime;
     resetPasswordToken: Schema.Attribute.String & Schema.Attribute.Private;
     role: Schema.Attribute.Relation<
