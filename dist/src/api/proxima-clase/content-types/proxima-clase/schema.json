@@ -1,0 +1,31 @@
+{
+    "kind": "collectionType",
+    "collectionName": "proxima_clases",
+    "info": {
+        "singularName": "proxima-clase",
+        "pluralName": "proxima-clases",
+        "displayName": "Proxima Clase"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "Titulo": {
+            "type": "string"
+        },
+        "Link": {
+            "type": "string"
+        },
+        "Dirigido": {
+            "type": "enumeration",
+            "enum": [
+                "Año I Adultos\t\t",
+                "ño II Adultos\t\t",
+                "Año III Adultos",
+                "Año IV Adultos\t",
+                "Año V Adultos"
+            ]
+        }
+    }
+}

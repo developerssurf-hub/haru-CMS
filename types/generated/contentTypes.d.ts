@@ -467,6 +467,46 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiAnuncioYLinkAnuncioYLink
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'anuncios_y_links_de_interes';
+  info: {
+    displayName: 'Anuncios y links de inter\u00E9s';
+    pluralName: 'anuncios-y-links-de-interes';
+    singularName: 'anuncio-y-link';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Contenido: Schema.Attribute.Text;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Dirigido: Schema.Attribute.Enumeration<
+      [
+        'Todos',
+        'A\u00F1o I Adultos\t\t',
+        '\u00F1o II Adultos\t\t',
+        'A\u00F1o III Adultos',
+        'A\u00F1o IV Adultos\t',
+        'A\u00F1o V Adultos',
+      ]
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::anuncio-y-link.anuncio-y-link'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    Titulo: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
   collectionName: 'blogs';
   info: {
@@ -491,6 +531,75 @@ export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     Slug: Schema.Attribute.String;
     title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiEventoEvento extends Struct.CollectionTypeSchema {
+  collectionName: 'eventos';
+  info: {
+    displayName: 'Evento';
+    pluralName: 'eventos';
+    singularName: 'evento';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    DescripcionCorta: Schema.Attribute.String;
+    DescripcionLarga: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::evento.evento'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    Titulo: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiProximaClaseProximaClase
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'proxima_clases';
+  info: {
+    displayName: 'Proxima Clase';
+    pluralName: 'proxima-clases';
+    singularName: 'proxima-clase';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Dirigido: Schema.Attribute.Enumeration<
+      [
+        'A\u00F1o I Adultos\t\t',
+        '\u00F1o II Adultos\t\t',
+        'A\u00F1o III Adultos',
+        'A\u00F1o IV Adultos\t',
+        'A\u00F1o V Adultos',
+      ]
+    >;
+    Link: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::proxima-clase.proxima-clase'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    Titulo: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1041,7 +1150,10 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::anuncio-y-link.anuncio-y-link': ApiAnuncioYLinkAnuncioYLink;
       'api::blog.blog': ApiBlogBlog;
+      'api::evento.evento': ApiEventoEvento;
+      'api::proxima-clase.proxima-clase': ApiProximaClaseProximaClase;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

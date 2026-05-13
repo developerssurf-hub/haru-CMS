@@ -1,0 +1,32 @@
+{
+    "kind": "collectionType",
+    "collectionName": "anuncios_y_links_de_interes",
+    "info": {
+        "singularName": "anuncio-y-link",
+        "pluralName": "anuncios-y-links-de-interes",
+        "displayName": "Anuncios y links de interés"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "Titulo": {
+            "type": "string"
+        },
+        "Contenido": {
+            "type": "text"
+        },
+        "Dirigido": {
+            "type": "enumeration",
+            "enum": [
+                "Todos",
+                "Año I Adultos\t\t",
+                "ño II Adultos\t\t",
+                "Año III Adultos",
+                "Año IV Adultos\t",
+                "Año V Adultos"
+            ]
+        }
+    }
+}
