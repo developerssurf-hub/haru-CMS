@@ -20,11 +20,13 @@
         "Dirigido": {
             "type": "enumeration",
             "enum": [
-                "Año I Adultos\t\t",
-                "ño II Adultos\t\t",
+                "Año I Adultos",
+                "Año II Adultos",
                 "Año III Adultos",
-                "Año IV Adultos\t",
-                "Año V Adultos"
+                "Año IV Adultos",
+                "Año V Adultos",
+                "Nivel I Niños",
+                "Nivel II Niños"
             ]
         }
     }

@@ -486,11 +486,13 @@ export interface ApiAnuncioYLinkAnuncioYLink
     Dirigido: Schema.Attribute.Enumeration<
       [
         'Todos',
-        'A\u00F1o I Adultos\t\t',
-        '\u00F1o II Adultos\t\t',
+        'A\u00F1o I Adultos',
+        'A\u00F1o II Adultos',
         'A\u00F1o III Adultos',
-        'A\u00F1o IV Adultos\t',
+        'A\u00F1o IV Adultos',
         'A\u00F1o V Adultos',
+        'Nivel I Ni\u00F1os',
+        'Nivel II Ni\u00F1os',
       ]
     >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -537,6 +539,33 @@ export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiCursoCurso extends Struct.CollectionTypeSchema {
+  collectionName: 'cursos';
+  info: {
+    displayName: 'Cursos';
+    pluralName: 'cursos';
+    singularName: 'curso';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Descripcion: Schema.Attribute.Text;
+    Inicio: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::curso.curso'> &
+      Schema.Attribute.Private;
+    Nombre: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiEventoEvento extends Struct.CollectionTypeSchema {
   collectionName: 'eventos';
   info: {
@@ -567,6 +596,37 @@ export interface ApiEventoEvento extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiPatioDeJuegoPatioDeJuego
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'patio_de_juegos';
+  info: {
+    displayName: 'Patio de juegos';
+    pluralName: 'patio-de-juegos';
+    singularName: 'patio-de-juego';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Descripcion: Schema.Attribute.Text;
+    Enable: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::patio-de-juego.patio-de-juego'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    Titulo: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiProximaClaseProximaClase
   extends Struct.CollectionTypeSchema {
   collectionName: 'proxima_clases';
@@ -584,11 +644,13 @@ export interface ApiProximaClaseProximaClase
       Schema.Attribute.Private;
     Dirigido: Schema.Attribute.Enumeration<
       [
-        'A\u00F1o I Adultos\t\t',
-        '\u00F1o II Adultos\t\t',
+        'A\u00F1o I Adultos',
+        'A\u00F1o II Adultos',
         'A\u00F1o III Adultos',
-        'A\u00F1o IV Adultos\t',
+        'A\u00F1o IV Adultos',
         'A\u00F1o V Adultos',
+        'Nivel I Ni\u00F1os',
+        'Nivel II Ni\u00F1os',
       ]
     >;
     Link: Schema.Attribute.String;
@@ -1152,7 +1214,9 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::anuncio-y-link.anuncio-y-link': ApiAnuncioYLinkAnuncioYLink;
       'api::blog.blog': ApiBlogBlog;
+      'api::curso.curso': ApiCursoCurso;
       'api::evento.evento': ApiEventoEvento;
+      'api::patio-de-juego.patio-de-juego': ApiPatioDeJuegoPatioDeJuego;
       'api::proxima-clase.proxima-clase': ApiProximaClaseProximaClase;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
