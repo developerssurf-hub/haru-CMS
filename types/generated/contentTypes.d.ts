@@ -550,6 +550,7 @@ export interface ApiCursoCurso extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    Activo: Schema.Attribute.Boolean;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -559,6 +560,7 @@ export interface ApiCursoCurso extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::curso.curso'> &
       Schema.Attribute.Private;
     Nombre: Schema.Attribute.String;
+    Portada: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

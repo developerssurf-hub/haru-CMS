@@ -11,6 +11,19 @@
     },
     "pluginOptions": {},
     "attributes": {
+        "Portada": {
+            "type": "media",
+            "multiple": false,
+            "allowedTypes": [
+                "images",
+                "files",
+                "videos",
+                "audios"
+            ]
+        },
+        "Activo": {
+            "type": "boolean"
+        },
         "Nombre": {
             "type": "string"
         },
