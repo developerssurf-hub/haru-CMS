@@ -19,6 +19,7 @@
     "@babel/runtime": "^7.26.0",
     "@strapi/plugin-cloud": "5.42.1",
     "@strapi/plugin-users-permissions": "5.42.1",
+    "@strapi/provider-upload-cloudinary": "^5.46.0",
     "@strapi/strapi": "5.42.1",
     "mysql2": "^3.11.0",
     "react": "^18.0.0",
