@@ -1,0 +1,33 @@
+{
+    "kind": "collectionType",
+    "collectionName": "mapeo_lecciones",
+    "info": {
+        "singularName": "mapeo-leccion",
+        "pluralName": "mapeo-lecciones",
+        "displayName": "MapeoLecciones"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "Rol": {
+            "type": "enumeration",
+            "enum": [
+                "Año I Adultos",
+                "Año II Adultos",
+                "Año III Adultos",
+                "Año IV Adultos",
+                "Año V Adultos",
+                "Nivel I Niños",
+                "Nivel II Niños"
+            ]
+        },
+        "LeccionInicio": {
+            "type": "integer"
+        },
+        "LeccionFin": {
+            "type": "integer"
+        }
+    }
+}

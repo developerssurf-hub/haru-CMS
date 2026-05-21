@@ -598,6 +598,47 @@ export interface ApiEventoEvento extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiMapeoLeccionMapeoLeccion
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'mapeo_lecciones';
+  info: {
+    displayName: 'MapeoLecciones';
+    pluralName: 'mapeo-lecciones';
+    singularName: 'mapeo-leccion';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    LeccionFin: Schema.Attribute.Integer;
+    LeccionInicio: Schema.Attribute.Integer;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mapeo-leccion.mapeo-leccion'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    Rol: Schema.Attribute.Enumeration<
+      [
+        'A\u00F1o I Adultos',
+        'A\u00F1o II Adultos',
+        'A\u00F1o III Adultos',
+        'A\u00F1o IV Adultos',
+        'A\u00F1o V Adultos',
+        'Nivel I Ni\u00F1os',
+        'Nivel II Ni\u00F1os',
+      ]
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPatioDeJuegoPatioDeJuego
   extends Struct.CollectionTypeSchema {
   collectionName: 'patio_de_juegos';
@@ -1218,6 +1259,7 @@ declare module '@strapi/strapi' {
       'api::blog.blog': ApiBlogBlog;
       'api::curso.curso': ApiCursoCurso;
       'api::evento.evento': ApiEventoEvento;
+      'api::mapeo-leccion.mapeo-leccion': ApiMapeoLeccionMapeoLeccion;
       'api::patio-de-juego.patio-de-juego': ApiPatioDeJuegoPatioDeJuego;
       'api::proxima-clase.proxima-clase': ApiProximaClaseProximaClase;
       'plugin::content-releases.release': PluginContentReleasesRelease;
