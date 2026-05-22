@@ -109,6 +109,12 @@
     },
     "MAYORACARGO": {
       "type": "string"
+    },
+    "LeccionInicio": {
+      "type": "integer"
+    },
+    "LeccionFin": {
+      "type": "integer"
     }
   }
 }
