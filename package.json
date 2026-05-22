@@ -12,7 +12,8 @@
     "start": "strapi start",
     "strapi": "strapi",
     "upgrade": "npx @strapi/upgrade latest",
-    "upgrade:dry": "npx @strapi/upgrade latest --dry"
+    "upgrade:dry": "npx @strapi/upgrade latest --dry",
+    "install:prod": "npm ci --omit=dev"
   },
   "dependencies": {
     "@babel/code-frame": "^7.26.0",
@@ -31,7 +32,6 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "better-sqlite3": "^12.10.0",
     "typescript": "^5"
   },
   "engines": {
@@ -43,6 +43,7 @@
     "installId": "d9009757165d0a2e4d08b236c8e088608d67c4d6d071099d5882c76f589429d0"
   },
   "optionalDependencies": {
-    "@rollup/rollup-linux-x64-gnu": "^4.60.2"
+    "@rollup/rollup-linux-x64-gnu": "^4.60.2",
+    "better-sqlite3": "^12.10.0"
   }
 }
