@@ -631,6 +631,7 @@ export interface ApiMapeoLeccionMapeoLeccion
         'A\u00F1o V Adultos',
         'Nivel I Ni\u00F1os',
         'Nivel II Ni\u00F1os',
+        'ni\u00F1os 1 er nivel ( junio)',
       ]
     >;
     updatedAt: Schema.Attribute.DateTime;
