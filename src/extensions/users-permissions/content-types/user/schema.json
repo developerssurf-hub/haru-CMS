@@ -115,6 +115,11 @@
     },
     "LeccionFin": {
       "type": "integer"
+    },
+    "programa": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::programa.programa"
     }
   }
 }

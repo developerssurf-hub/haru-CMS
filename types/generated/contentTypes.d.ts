@@ -671,6 +671,40 @@ export interface ApiPatioDeJuegoPatioDeJuego
   };
 }
 
+export interface ApiProgramaPrograma extends Struct.CollectionTypeSchema {
+  collectionName: 'programas';
+  info: {
+    displayName: 'programa';
+    pluralName: 'programas';
+    singularName: 'programa';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    curso: Schema.Attribute.Relation<'oneToOne', 'api::curso.curso'>;
+    Folder: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::programa.programa'
+    > &
+      Schema.Attribute.Private;
+    mapeo_leccione: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::mapeo-leccion.mapeo-leccion'
+    >;
+    Nombre: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiProximaClaseProximaClase
   extends Struct.CollectionTypeSchema {
   collectionName: 'proxima_clases';
@@ -1199,6 +1233,7 @@ export interface PluginUsersPermissionsUser
       Schema.Attribute.SetMinMaxLength<{
         minLength: 6;
       }>;
+    programa: Schema.Attribute.Relation<'oneToOne', 'api::programa.programa'>;
     provider: Schema.Attribute.String;
     PROVINCIA: Schema.Attribute.Enumeration<
       [
@@ -1264,6 +1299,7 @@ declare module '@strapi/strapi' {
       'api::evento.evento': ApiEventoEvento;
       'api::mapeo-leccion.mapeo-leccion': ApiMapeoLeccionMapeoLeccion;
       'api::patio-de-juego.patio-de-juego': ApiPatioDeJuegoPatioDeJuego;
+      'api::programa.programa': ApiProgramaPrograma;
       'api::proxima-clase.proxima-clase': ApiProximaClaseProximaClase;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

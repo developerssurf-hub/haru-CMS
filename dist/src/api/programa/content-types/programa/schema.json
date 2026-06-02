@@ -1,0 +1,31 @@
+{
+    "kind": "collectionType",
+    "collectionName": "programas",
+    "info": {
+        "singularName": "programa",
+        "pluralName": "programas",
+        "displayName": "programa"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "Nombre": {
+            "type": "string"
+        },
+        "Folder": {
+            "type": "string"
+        },
+        "mapeo_leccione": {
+            "type": "relation",
+            "relation": "oneToOne",
+            "target": "api::mapeo-leccion.mapeo-leccion"
+        },
+        "curso": {
+            "type": "relation",
+            "relation": "oneToOne",
+            "target": "api::curso.curso"
+        }
+    }
+}
