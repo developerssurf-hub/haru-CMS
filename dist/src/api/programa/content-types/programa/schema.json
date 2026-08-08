@@ -17,7 +17,7 @@
         "Folder": {
             "type": "string"
         },
-        "mapeo_leccione": {
+        "mapeo_lecciones": {
             "type": "relation",
             "relation": "oneToOne",
             "target": "api::mapeo-leccion.mapeo-leccion"
@@ -26,6 +26,12 @@
             "type": "relation",
             "relation": "oneToOne",
             "target": "api::curso.curso"
+        },
+        "examenes": {
+            "type": "relation",
+            "relation": "manyToMany",
+            "target": "api::examen.examen",
+            "mappedBy": "programas"
         }
     }
 }

@@ -1,0 +1,20 @@
+{
+    "collectionName": "components_examen_opcions",
+    "info": {
+        "displayName": "Opcion",
+        "icon": "check",
+        "description": ""
+    },
+    "options": {},
+    "attributes": {
+        "texto": {
+            "type": "string",
+            "required": true
+        },
+        "es_correcta": {
+            "type": "boolean",
+            "default": false,
+            "required": true
+        }
+    }
+}

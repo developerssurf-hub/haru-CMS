@@ -1,0 +1,40 @@
+{
+  "collectionName": "components_examen_preguntas",
+  "info": {
+    "displayName": "Pregunta",
+    "icon": "question",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "enunciado": {
+      "type": "richtext",
+      "required": true
+    },
+    "media": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "tipo": {
+      "type": "enumeration",
+      "enum": [
+        "multiple_choice",
+        "true_false"
+      ],
+      "default": "multiple_choice",
+      "required": true
+    },
+    "opciones": {
+      "type": "component",
+      "repeatable": true,
+      "component": "examen.opcion"
+    }
+  }
+}

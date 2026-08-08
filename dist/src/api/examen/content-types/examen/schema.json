@@ -1,0 +1,47 @@
+{
+    "kind": "collectionType",
+    "collectionName": "examenes",
+    "info": {
+        "singularName": "examen",
+        "pluralName": "examenes",
+        "displayName": "examen"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "titulo": {
+            "type": "string",
+            "required": true
+        },
+        "descripcion": {
+            "type": "richtext"
+        },
+        "preguntas": {
+            "type": "component",
+            "repeatable": true,
+            "component": "examen.pregunta"
+        },
+        "fecha_apertura": {
+            "type": "datetime"
+        },
+        "fecha_clausura": {
+            "type": "datetime"
+        },
+        "max_intentos": {
+            "type": "integer",
+            "default": 1
+        },
+        "horas_cooldown": {
+            "type": "integer",
+            "default": 24
+        },
+        "programas": {
+            "type": "relation",
+            "relation": "manyToMany",
+            "target": "api::programa.programa",
+            "inversedBy": "examenes"
+        }
+    }
+}

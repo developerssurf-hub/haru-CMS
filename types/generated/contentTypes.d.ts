@@ -598,6 +598,81 @@ export interface ApiEventoEvento extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiExamenExamen extends Struct.CollectionTypeSchema {
+  collectionName: 'examenes';
+  info: {
+    displayName: 'examen';
+    pluralName: 'examenes';
+    singularName: 'examen';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    descripcion: Schema.Attribute.RichText;
+    fecha_apertura: Schema.Attribute.DateTime;
+    fecha_clausura: Schema.Attribute.DateTime;
+    horas_cooldown: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<24>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::examen.examen'
+    > &
+      Schema.Attribute.Private;
+    max_intentos: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<1>;
+    preguntas: Schema.Attribute.Component<'examen.pregunta', true>;
+    programas: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::programa.programa'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    titulo: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiIntentoExamenIntentoExamen
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'intento_examenes';
+  info: {
+    description: 'Registro de los intentos de ex\u00E1menes de los alumnos';
+    displayName: 'Intento de Examen';
+    pluralName: 'intento-examenes';
+    singularName: 'intento-examen';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    alumno: Schema.Attribute.Relation<
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    examen: Schema.Attribute.Relation<'manyToOne', 'api::examen.examen'>;
+    fecha_intento: Schema.Attribute.DateTime & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::intento-examen.intento-examen'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    puntaje: Schema.Attribute.Integer & Schema.Attribute.Required;
+    respuestas: Schema.Attribute.JSON;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiMapeoLeccionMapeoLeccion
   extends Struct.CollectionTypeSchema {
   collectionName: 'mapeo_lecciones';
@@ -621,19 +696,9 @@ export interface ApiMapeoLeccionMapeoLeccion
       'api::mapeo-leccion.mapeo-leccion'
     > &
       Schema.Attribute.Private;
+    ProgramaNombre: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
-    Rol: Schema.Attribute.Enumeration<
-      [
-        'A\u00F1o I Adultos',
-        'A\u00F1o II Adultos',
-        'A\u00F1o III Adultos',
-        'A\u00F1o IV Adultos',
-        'A\u00F1o V Adultos',
-        'Nivel I Ni\u00F1os',
-        'Nivel II Ni\u00F1os',
-        'ni\u00F1os 1 er nivel ( junio)',
-      ]
-    >;
+    Rol: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -686,6 +751,7 @@ export interface ApiProgramaPrograma extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     curso: Schema.Attribute.Relation<'oneToOne', 'api::curso.curso'>;
+    examenes: Schema.Attribute.Relation<'manyToMany', 'api::examen.examen'>;
     Folder: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -693,7 +759,7 @@ export interface ApiProgramaPrograma extends Struct.CollectionTypeSchema {
       'api::programa.programa'
     > &
       Schema.Attribute.Private;
-    mapeo_leccione: Schema.Attribute.Relation<
+    mapeo_lecciones: Schema.Attribute.Relation<
       'oneToOne',
       'api::mapeo-leccion.mapeo-leccion'
     >;
@@ -1297,6 +1363,8 @@ declare module '@strapi/strapi' {
       'api::blog.blog': ApiBlogBlog;
       'api::curso.curso': ApiCursoCurso;
       'api::evento.evento': ApiEventoEvento;
+      'api::examen.examen': ApiExamenExamen;
+      'api::intento-examen.intento-examen': ApiIntentoExamenIntentoExamen;
       'api::mapeo-leccion.mapeo-leccion': ApiMapeoLeccionMapeoLeccion;
       'api::patio-de-juego.patio-de-juego': ApiPatioDeJuegoPatioDeJuego;
       'api::programa.programa': ApiProgramaPrograma;

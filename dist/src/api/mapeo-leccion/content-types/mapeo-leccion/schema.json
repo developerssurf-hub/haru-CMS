@@ -12,17 +12,10 @@
     "pluginOptions": {},
     "attributes": {
         "Rol": {
-            "type": "enumeration",
-            "enum": [
-                "Año I Adultos",
-                "Año II Adultos",
-                "Año III Adultos",
-                "Año IV Adultos",
-                "Año V Adultos",
-                "Nivel I Niños",
-                "Nivel II Niños",
-                "niños 1 er nivel ( junio)"
-            ]
+            "type": "string"
+        },
+        "ProgramaNombre": {
+            "type": "string"
         },
         "LeccionInicio": {
             "type": "integer"

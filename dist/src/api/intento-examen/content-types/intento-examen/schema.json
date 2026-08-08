@@ -1,0 +1,37 @@
+{
+    "kind": "collectionType",
+    "collectionName": "intento_examenes",
+    "info": {
+        "singularName": "intento-examen",
+        "pluralName": "intento-examenes",
+        "displayName": "Intento de Examen",
+        "description": "Registro de los intentos de exámenes de los alumnos"
+    },
+    "options": {
+        "draftAndPublish": false
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "alumno": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "plugin::users-permissions.user"
+        },
+        "examen": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::examen.examen"
+        },
+        "puntaje": {
+            "type": "integer",
+            "required": true
+        },
+        "respuestas": {
+            "type": "json"
+        },
+        "fecha_intento": {
+            "type": "datetime",
+            "required": true
+        }
+    }
+}
