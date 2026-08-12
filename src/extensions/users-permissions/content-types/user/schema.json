@@ -118,7 +118,7 @@
     },
     "programa": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "manyToMany",
       "target": "api::programa.programa"
     }
   }

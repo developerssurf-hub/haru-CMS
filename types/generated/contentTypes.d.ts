@@ -1299,7 +1299,7 @@ export interface PluginUsersPermissionsUser
       Schema.Attribute.SetMinMaxLength<{
         minLength: 6;
       }>;
-    programa: Schema.Attribute.Relation<'oneToOne', 'api::programa.programa'>;
+    programa: Schema.Attribute.Relation<'manyToMany', 'api::programa.programa'>;
     provider: Schema.Attribute.String;
     PROVINCIA: Schema.Attribute.Enumeration<
       [
