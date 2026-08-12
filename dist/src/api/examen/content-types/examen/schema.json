@@ -42,6 +42,12 @@
             "relation": "manyToMany",
             "target": "api::programa.programa",
             "inversedBy": "examenes"
+        },
+        "porcentaje_aprobacion": {
+            "type": "integer",
+            "default": 70,
+            "min": 0,
+            "max": 100
         }
     }
 }

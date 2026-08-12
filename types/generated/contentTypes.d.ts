@@ -623,6 +623,15 @@ export interface ApiExamenExamen extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     max_intentos: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<1>;
+    porcentaje_aprobacion: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 100;
+          min: 0;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<70>;
     preguntas: Schema.Attribute.Component<'examen.pregunta', true>;
     programas: Schema.Attribute.Relation<
       'manyToMany',

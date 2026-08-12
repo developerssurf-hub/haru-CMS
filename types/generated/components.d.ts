@@ -26,6 +26,8 @@ export interface ExamenPregunta extends Struct.ComponentSchema {
     enunciado: Schema.Attribute.RichText & Schema.Attribute.Required;
     media: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     opciones: Schema.Attribute.Component<'examen.opcion', true>;
+    seccion_descripcion: Schema.Attribute.RichText;
+    seccion_titulo: Schema.Attribute.String;
     tipo: Schema.Attribute.Enumeration<['multiple_choice', 'true_false']> &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'multiple_choice'>;
