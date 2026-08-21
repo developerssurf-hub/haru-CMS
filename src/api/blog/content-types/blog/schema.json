@@ -42,6 +42,14 @@
     },
     "Contenido": {
       "type": "blocks"
+    },
+    "Tag": {
+      "type": "enumeration",
+      "enum": [
+        "blog",
+        "gramatica"
+      ],
+      "default": "blog"
     }
   }
 }

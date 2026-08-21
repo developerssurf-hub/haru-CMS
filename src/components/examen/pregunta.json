@@ -26,7 +26,8 @@
       "type": "enumeration",
       "enum": [
         "multiple_choice",
-        "true_false"
+        "true_false",
+        "contexto"
       ],
       "default": "multiple_choice",
       "required": true

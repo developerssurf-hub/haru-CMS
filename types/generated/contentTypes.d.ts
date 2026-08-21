@@ -532,6 +532,8 @@ export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
     Portada: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     publishedAt: Schema.Attribute.DateTime;
     Slug: Schema.Attribute.String;
+    Tag: Schema.Attribute.Enumeration<['blog', 'gramatica']> &
+      Schema.Attribute.DefaultTo<'blog'>;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
